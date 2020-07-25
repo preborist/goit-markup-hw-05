@@ -18,6 +18,8 @@
   --secondary-bg-color: #f5f4fa;
   --accent-color: #2196f3;
   --primary-icon-color: #afb1b8;
+  --transition-time: 250ms;
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -81,7 +83,6 @@ p {
 /* Buttons */
 
 .button {
-  /* height: 38px; */
   padding-top: 6px;
   padding-right: 22px;
   padding-bottom: 6px;
@@ -96,7 +97,12 @@ p {
   background-color: var(--secondary-bg-color);
   border-style: none;
   border-radius: 4px;
+  transition: box-shadow var(--transition-time) var(--cubic-bezier),
+    color var(--transition-time) var(--cubic-bezier),
+    background-color var(--transition-time) var(--cubic-bezier);
+
 }
+
 
 .button:hover,
 .button:focus {
@@ -105,6 +111,7 @@ p {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 3px 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+
 }
 
 .button.primary {
@@ -181,11 +188,41 @@ p {
 
 .navigation-list-link {
   display: block;
+  position: relative;
   padding-top: 32px;
   padding-bottom: 32px;
   font-weight: 500;
+
   letter-spacing: 0.02em;
   color: var(--primary-title-text-color);
+  transition: color var(--transition-time) var(--cubic-bezier);
+}
+
+.navigation-list-link.current {
+  color: var(--accent-color);
+}
+
+.navigation-list-link::after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transform: scaleX(0);
+}
+
+.navigation-list-link:hover::after,
+.navigation-list-link:focus::after {
+  transition: transform var(--transition-time) var(--cubic-bezier);
+  transform: scaleX(1);
+}
+
+.navigation-list-link.current::after {
+  transform: scaleX(1);
 }
 
 .navigation-list-link:hover,
@@ -221,6 +258,8 @@ p {
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
   fill: currentColor;
+  transition: color var(--transition-time) var(--cubic-bezier),
+    fill var(--transition-time) var(--cubic-bezier);
 }
 
 .header-contacts-mail:hover,
@@ -242,12 +281,11 @@ p {
   text-align: center;
   max-width: 1920px;
   /* min-width: 1200px; */
+  margin-top: -1px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(
-      rgba(47, 48, 58, 0.8),
-      rgba(47, 48, 58, 0.8)
-    ),
+  background-image: linear-gradient(rgba(47, 48, 58, 0.8),
+      rgba(47, 48, 58, 0.8)),
     url(../images/hero-bg.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -316,6 +354,10 @@ p {
   display: flex;
 }
 
+.what-we-do-list-item {
+  position: relative;
+}
+
 .what-we-do-list-item:not(:last-child) {
   margin-right: 30px;
 }
@@ -325,6 +367,10 @@ p {
 }
 
 .what-we-do-item-title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   padding-top: 27px;
   padding-bottom: 27px;
   font-weight: 700;
@@ -400,6 +446,9 @@ p {
   height: 44px;
   border-radius: 50%;
   fill: var(--primary-icon-color);
+  transition: background-color var(--transition-time) var(--cubic-bezier),
+    fill var(--transition-time) var(--cubic-bezier);
+
 }
 
 .socials-list-item-link-icon {
@@ -445,6 +494,10 @@ p {
   border: 1px solid var(--primary-icon-color);
   box-sizing: border-box;
   border-radius: 4px;
+
+  transition: border-color var(--transition-time) var(--cubic-bezier),
+    fill var(--transition-time) var(--cubic-bezier);
+
 }
 
 .clients-list-item-link:hover,
@@ -588,7 +641,30 @@ p {
 
 .portfolio-works-list-item {
   width: 370px;
-  /* margin-bottom: 30px; */
+}
+
+.portfolio-img-wrapper {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-works-list-item-link .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  transform: translateY(100%);
+  transition: transform var(--transition-time) var(--cubic-bezier);
+}
+
+.portfolio-works-list-item-link:hover .text,
+.portfolio-works-list-item-link:focus .text {
+  transform: translateY(0);
+  opacity: 1;
+
+  /* pointer-events: none; */
 }
 
 .portfolio-works-list-item:not(:nth-child(3n)) {
@@ -603,13 +679,17 @@ p {
   display: block;
   background: #ffffff;
   outline: 1px solid #eeeeee;
+  transition: box-shadow var(--transition-time) var(--cubic-bezier);
+
 }
+
 
 .portfolio-works-list-item-link:hover,
 .portfolio-works-list-item-link:focus {
   outline: none;
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
     0px 1px 1px rgba(0, 0, 0, 0.12);
+
 }
 
 .portfolio-works-list-item-link .title {
