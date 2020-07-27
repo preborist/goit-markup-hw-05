@@ -100,9 +100,7 @@ p {
   transition: box-shadow var(--transition-time) var(--cubic-bezier),
     color var(--transition-time) var(--cubic-bezier),
     background-color var(--transition-time) var(--cubic-bezier);
-
 }
-
 
 .button:hover,
 .button:focus {
@@ -111,7 +109,6 @@ p {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 3px 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-
 }
 
 .button.primary {
@@ -213,6 +210,7 @@ p {
   background-color: var(--accent-color);
   border-radius: 2px;
   transform: scaleX(0);
+  transition: transform var(--transition-time) var(--cubic-bezier);
 }
 
 .navigation-list-link:hover::after,
@@ -284,8 +282,10 @@ p {
   margin-top: -1px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(rgba(47, 48, 58, 0.8),
-      rgba(47, 48, 58, 0.8)),
+  background-image: linear-gradient(
+      rgba(47, 48, 58, 0.8),
+      rgba(47, 48, 58, 0.8)
+    ),
     url(../images/hero-bg.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -448,7 +448,6 @@ p {
   fill: var(--primary-icon-color);
   transition: background-color var(--transition-time) var(--cubic-bezier),
     fill var(--transition-time) var(--cubic-bezier);
-
 }
 
 .socials-list-item-link-icon {
@@ -497,7 +496,6 @@ p {
 
   transition: border-color var(--transition-time) var(--cubic-bezier),
     fill var(--transition-time) var(--cubic-bezier);
-
 }
 
 .clients-list-item-link:hover,
@@ -654,9 +652,10 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-
+  opacity: 0;
   transform: translateY(100%);
-  transition: transform var(--transition-time) var(--cubic-bezier);
+  transition: transform var(--transition-time) var(--cubic-bezier),
+    opacity var(--transition-time) var(--cubic-bezier);
 }
 
 .portfolio-works-list-item-link:hover .text,
@@ -680,16 +679,13 @@ p {
   background: #ffffff;
   outline: 1px solid #eeeeee;
   transition: box-shadow var(--transition-time) var(--cubic-bezier);
-
 }
-
 
 .portfolio-works-list-item-link:hover,
 .portfolio-works-list-item-link:focus {
   outline: none;
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
     0px 1px 1px rgba(0, 0, 0, 0.12);
-
 }
 
 .portfolio-works-list-item-link .title {
