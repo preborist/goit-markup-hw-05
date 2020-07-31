@@ -215,7 +215,6 @@ p {
 
 .navigation-list-link:hover::after,
 .navigation-list-link:focus::after {
-  transition: transform var(--transition-time) var(--cubic-bezier);
   transform: scaleX(1);
 }
 
@@ -278,14 +277,11 @@ p {
 .hero {
   text-align: center;
   max-width: 1920px;
-  /* min-width: 1200px; */
   margin-top: -1px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(
-      rgba(47, 48, 58, 0.8),
-      rgba(47, 48, 58, 0.8)
-    ),
+  background-image: linear-gradient(rgba(47, 48, 58, 0.8),
+      rgba(47, 48, 58, 0.8)),
     url(../images/hero-bg.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -662,8 +658,6 @@ p {
 .portfolio-works-list-item-link:focus .text {
   transform: translateY(0);
   opacity: 1;
-
-  /* pointer-events: none; */
 }
 
 .portfolio-works-list-item:not(:nth-child(3n)) {
